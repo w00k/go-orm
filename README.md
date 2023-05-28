@@ -34,3 +34,7 @@ The estructure of the project is his
     └── query
 
 ```
+
+Then you run the application, It will create the tables **Countries** and **Users** in the data base. 
+
+![Data Base Diagram](doc/DB_Diagram.png)

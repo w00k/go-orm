@@ -13,6 +13,7 @@ func main() {
 
 	db := connection.Conn()
 
+	// Create tables and add data
 	data.Init(db)
 
 	query.GetFirst(db)
@@ -23,6 +24,14 @@ func main() {
 
 	// Get Users with Ids in {1, 2, 3}
 	query.GetUserWhereIdsAreValue(db, []int{3, 4, 5})
+
+	query.GetUserById(db, 7)
+
+	query.GetDiferentNumber(db)
+
+	query.GetUserJoinCountry(db)
+
+	query.GetUserJoinCountryWhereCountryIsCA(db)
 
 	fmt.Println("done")
 

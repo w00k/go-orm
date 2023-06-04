@@ -33,6 +33,8 @@ func main() {
 
 	query.GetUserJoinCountryWhereCountryIsCA(db)
 
+	query.GetUserWithScan(db)
+
 	fmt.Println("done")
 
 }

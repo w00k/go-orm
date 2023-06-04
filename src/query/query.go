@@ -103,3 +103,17 @@ func GetUserJoinCountryWhereCountryIsCA(db *gorm.DB) (userJoinCountries []models
 	fmt.Printf("error %d\n\n", result.Error)              // returns error or nil
 	return
 }
+
+func GetUserWithScan(db *gorm.DB) (userJoinCountries []models.UserJoinCountry) {
+
+	// Raw SQL
+	result := db.Raw("SELECT users.id, users.name, users.number, countries.name as country FROM users INNER JOIN countries ON users.country_code = countries.code WHERE country_code = ?", "CL").Scan(&userJoinCountries)
+
+	for _, user := range userJoinCountries {
+		fmt.Printf("GetUserWithScan ::: %d %s %d %s\n", user.Id, user.Name, user.Number, user.Country)
+	}
+
+	fmt.Printf("count records %d\n", result.RowsAffected) // returns count of records found
+	fmt.Printf("error %d\n\n", result.Error)              // returns error or nil
+	return
+}
